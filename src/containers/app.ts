@@ -1,7 +1,7 @@
 import {Component, View, Inject, OnDestroy, OnInit} from 'angular2/core';
 import {Counter} from '../components/counter';
 import * as CounterActions from '../actions/counter';
-import Reduxify from '../util/reduxify';
+import ReduxConnect from '../util/redux-connect';
 
 @Component({
   selector: 'root'
@@ -17,7 +17,7 @@ import Reduxify from '../util/reduxify';
   </counter>
   `
 })
-@Reduxify({
+@ReduxConnect({
   actions: CounterActions,
   mapStateToThis: (state) => ({counter: state.counter})
 })

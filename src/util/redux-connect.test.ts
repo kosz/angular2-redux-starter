@@ -1,19 +1,9 @@
-import Reduxify from './reduxify';
+import ReduxConnect from './redux-connect';
 
 describe('@Reduxify', () => {
 
-  //  it('works kind of like the React Connect', () => {
-  //    @Connect(
-  //      function() { return { user: state.user }; }, 
-  //      function(dispatch) { 
-  //        return {
-  //      customAction: (asdf) => dispatch(ActionsFile.myAction('1', '2', asdf)
-  //        }
-  //      }
-  //  });
-
   it('decorates the class with 4 methods', () => {
-    @Reduxify({
+    @ReduxConnect({
       actions: {},
       mapStateToThis: () => {}
     })
@@ -30,7 +20,7 @@ describe('@Reduxify', () => {
 
     let spy = sinon.spy();
 
-    @Reduxify({
+    @ReduxConnect({
       actions: {},
       mapStateToThis: () => {}
     })
