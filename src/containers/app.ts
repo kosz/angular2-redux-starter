@@ -1,7 +1,7 @@
 import {Component, View, Inject, OnDestroy, OnInit} from 'angular2/core';
-import {bindActionCreators} from 'redux';
 import {Counter} from '../components/counter';
 import * as CounterActions from '../actions/counter';
+import Reduxify from '../util/reduxify';
 
 @Component({
   selector: 'root'
@@ -17,31 +17,10 @@ import * as CounterActions from '../actions/counter';
   </counter>
   `
 })
-export default class App implements OnDestroy, OnInit {
-
-  protected unsubscribe: Function;
-
-  constructor( @Inject('ngRedux') private ngRedux) {
-
-  }
-
-  ngOnInit() {
-    this.unsubscribe = this.ngRedux.connect(
-      this.mapStateToThis,
-      this.mapDispatchToThis)(this);
-  }
-
-  ngOnDestroy() {
-    this.unsubscribe();
-  }
-
-  mapStateToThis(state) {
-    return {
-      counter: state.counter
-    };
-  }
-
-  mapDispatchToThis(dispatch) {
-    return bindActionCreators(CounterActions, dispatch);
-  }
+@Reduxify({
+  actions: CounterActions,
+  mapStateToThis: (state) => ({counter: state.counter})
+})
+export default class App {
+  constructor( @Inject('ngRedux') private ngRedux) { }
 }
