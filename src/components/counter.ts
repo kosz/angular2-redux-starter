@@ -13,7 +13,7 @@ import {Component, View} from 'angular2/core';
 @View({
   template: `
   <p>
-    Clicked: {{ counter }} times
+    Clicked: {{ counter | async }} times
     <button (click)="increment()">+</button>
     <button (click)="decrement()">-</button>
     <button (click)="incrementIfOdd()">Increment if odd</button>
