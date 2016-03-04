@@ -6,7 +6,7 @@ import {Component, View} from 'angular2/core';
     'counter',
     'increment',
     'decrement',
-    'incrementIfOdd',
+    'stor',
     'incrementAsync'
   ]
 })
@@ -16,7 +16,7 @@ import {Component, View} from 'angular2/core';
     Clicked: {{ counter | async }} times
     <button (click)="increment()">+</button>
     <button (click)="decrement()">-</button>
-    <button (click)="incrementIfOdd()">Increment if odd</button>
+    <button (click)="stor()">Stor</button>
     <button (click)="incrementAsync()">Increment async</button>
   </p>
   `

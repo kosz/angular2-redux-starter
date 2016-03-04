@@ -8,6 +8,7 @@ declare let __PRODUCTION__: any;
 
 import {provideStore} from '@ngrx/store';
 import {counter} from './ngrx/counter';
+import {stor} from './ngrx/stor';
 
 
 if (__PRODUCTION__) {
@@ -15,4 +16,5 @@ if (__PRODUCTION__) {
 }
 
 //bootstrap(App, [ provider(store) ]);
-bootstrap(App, [ provideStore({counter}, {counter: 0}) ]);
+bootstrap(App, [ provideStore({counter, stor}, 
+      {counter: 0, stor: new Date().toString()}) ]);
